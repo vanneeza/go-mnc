@@ -2,7 +2,10 @@ package txsrv
 
 import (
 	"database/sql"
+	"errors"
+	"fmt"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/segmentio/ksuid"
 	"github.com/vanneeza/go-mnc/internal/domain/entity"
 	"github.com/vanneeza/go-mnc/internal/domain/web/bankweb"
@@ -28,6 +31,7 @@ type TxServiceImpl struct {
 	BankRepository     bankrepo.BankRepository
 	BalanceRepository  balancerepo.BalanceRepository
 	CustomerRepository customerrepo.CustomerRepository
+	Validate           *validator.Validate
 	LogService         logsrv.LogService
 }
 
@@ -221,16 +225,22 @@ func (service *TxServiceImpl) Confirmation(req *txweb.DetailUpdateRequest) ([]tx
 
 // Invoice implements TxService.
 func (service *TxServiceImpl) Invoice(req *txweb.OrderCreateRequest) (*txweb.OrderResponse, error) {
-
 	tx, err := service.Db.Begin()
 	helper.PanicError(err)
 	defer helper.CommitOrRollback(tx)
+
+	err7 := service.Validate.Struct(req)
+	if err7 != nil {
+		return &txweb.OrderResponse{}, errors.New("failed to create order")
+	}
 
 	customer, err3 := service.CustomerRepository.FindByParams(tx, req.CustomerId, "")
 	helper.PanicError(err3)
 
 	product, err4 := service.ProductRepository.FindByParams(tx, req.ProductId, "")
-	helper.PanicError(err4)
+	if err4 != nil {
+		return &txweb.OrderResponse{}, err4
+	}
 
 	merchant, err5 := service.MerchantRepository.FindByParams(tx, product.Merchant.Id, "")
 	helper.PanicError(err5)
@@ -333,8 +343,20 @@ func (service *TxServiceImpl) Payment(req *txweb.PaymentCreateRequest) (*txweb.P
 	helper.PanicError(err)
 	defer helper.CommitOrRollback(tx)
 
+	err10 := service.Validate.Struct(req)
+	if err10 != nil {
+		return &txweb.PaymentResponse{}, errors.New("failed to payment")
+	}
+
 	order, err5 := service.TxRepository.FindOrder(tx, req.DetailId)
-	helper.PanicError(err5)
+	fmt.Printf("order: %v\n", order)
+	if err5 != nil {
+		return &txweb.PaymentResponse{}, err5
+	}
+
+	if req.Pay < order.Detail.TotalPrice {
+		return &txweb.PaymentResponse{}, errors.New("the money is not enough")
+	}
 
 	product, err6 := service.ProductRepository.FindByParams(tx, order.Product.Id, "")
 	helper.PanicError(err6)
@@ -343,7 +365,9 @@ func (service *TxServiceImpl) Payment(req *txweb.PaymentCreateRequest) (*txweb.P
 	helper.PanicError(err7)
 
 	banks, err8 := service.BankRepository.FindByIdBankAdmin(tx, req.BankId)
-	helper.PanicError(err8)
+	if err8 != nil {
+		return &txweb.PaymentResponse{}, err8
+	}
 
 	customer, err4 := service.CustomerRepository.FindByParams(tx, req.CustomerId, "")
 	helper.PanicError(err4)
@@ -421,16 +445,21 @@ func (service *TxServiceImpl) Payment(req *txweb.PaymentCreateRequest) (*txweb.P
 		Bank:     bankResponse,
 	}
 
+	detailResponse := txweb.DetailPayment{
+		TotalPrice: totalPrice,
+		Photo:      req.Photo.Filename,
+	}
+
 	paymentResponse := txweb.PaymentResponse{
 		Id:           p.Id,
 		PaymentOrder: orderResponse,
 		Pay:          req.Pay,
-		Photo:        req.Photo.Filename,
+		Detail:       detailResponse,
 	}
 	return &paymentResponse, nil
 }
 
-func NewTxService(Db *sql.DB, txRepository txrepo.TxRepository, productRepository productrepo.ProductRepository, merchantRepository merchantrepo.MerchantRepository, bankRepository bankrepo.BankRepository, balanceRepository balancerepo.BalanceRepository, customerRepository customerrepo.CustomerRepository, logService logsrv.LogService) TxService {
+func NewTxService(Db *sql.DB, txRepository txrepo.TxRepository, productRepository productrepo.ProductRepository, merchantRepository merchantrepo.MerchantRepository, bankRepository bankrepo.BankRepository, balanceRepository balancerepo.BalanceRepository, customerRepository customerrepo.CustomerRepository, validate *validator.Validate, logService logsrv.LogService) TxService {
 	return &TxServiceImpl{
 		Db:                 Db,
 		TxRepository:       txRepository,
@@ -439,6 +468,7 @@ func NewTxService(Db *sql.DB, txRepository txrepo.TxRepository, productRepositor
 		BankRepository:     bankRepository,
 		BalanceRepository:  balanceRepository,
 		CustomerRepository: customerRepository,
+		Validate:           validate,
 		LogService:         logService,
 	}
 }

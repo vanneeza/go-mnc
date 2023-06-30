@@ -77,11 +77,31 @@ func (controller *TxControllerImpl) Invoice(ctx *gin.Context) {
 	var order txweb.OrderCreateRequest
 
 	err := ctx.ShouldBindJSON(&order)
-	helper.PanicError(err)
+	if err != nil {
+		log.Error("userId: "+customerId, err)
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to create order",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
 
 	order.CustomerId = customerId
 	orderResponse, err2 := controller.TxService.Invoice(&order)
-	helper.PanicError(err2)
+	if err2 != nil {
+		log.Error("userId: "+customerId, err2)
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: err2.Error(),
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
 
 	log.Info("userId: " + customerId + " Has create the order")
 	webResponse := web.WebResponse{
@@ -97,6 +117,7 @@ func (controller *TxControllerImpl) Invoice(ctx *gin.Context) {
 func (controller *TxControllerImpl) Payment(ctx *gin.Context) {
 	claims := ctx.MustGet("claims").(jwt.MapClaims)
 	customerId := claims["id"].(string)
+	customerName := claims["name"].(string)
 	role := claims["role"].(string)
 
 	if role != "customer" {
@@ -117,23 +138,74 @@ func (controller *TxControllerImpl) Payment(ctx *gin.Context) {
 	payment.DetailId = detailId
 
 	err := ctx.ShouldBind(&payment)
-	helper.PanicError(err)
+	if err != nil {
+		log.Error("userId: "+customerId, err)
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to create payment",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
 
 	file, err2 := ctx.FormFile("photo")
-	helper.PanicError(err2)
+	if err2 != nil {
+		log.Error("userId: "+customerId, err)
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to create payment",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
 
 	ext := filepath.Ext(file.Filename)
+	validExtensions := []string{".png", ".jpg", ".jpeg"}
+
+	isValidExtension := false
+	for _, validExt := range validExtensions {
+		if ext == validExt {
+			isValidExtension = true
+			break
+		}
+	}
+
+	if !isValidExtension {
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Invalid file extension. Only PNG, JPG, and JPEG are allowed.",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
+
 	currentTime := time.Now()
 	formattedDate := currentTime.Format("20060102")
 	key := pkg.GenerateRandomNumber()
-	newFilename := fmt.Sprintf("%s%s%s%s%d%s", formattedDate, "_", "CustomerPayment", "_", key, ext)
 
+	newFilename := fmt.Sprintf("%s%s%s%s%s%s%d%s", formattedDate, "_", "CustomerPayment", "_", customerName, "_", key, ext)
 	uploadPath := filepath.Join("utils/document/uploads/customer_payment", newFilename)
 	err3 := ctx.SaveUploadedFile(file, uploadPath)
 	helper.PanicError(err3)
 
-	paymentResponse, err := controller.TxService.Payment(&payment)
-	helper.PanicError(err)
+	paymentResponse, errPayment := controller.TxService.Payment(&payment)
+	if errPayment != nil {
+		log.Error("userId: "+customerId, errPayment)
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: errPayment.Error(),
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"invoice": webResponse})
+		return
+	}
 
 	log.Info("userId: " + customerId + " Has create the payment")
 	webResponse := web.WebResponse{

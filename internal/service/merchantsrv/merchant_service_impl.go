@@ -17,6 +17,7 @@ import (
 	"github.com/vanneeza/go-mnc/internal/repository/productrepo"
 
 	"github.com/vanneeza/go-mnc/utils/helper"
+	"github.com/vanneeza/go-mnc/utils/log"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -174,7 +175,10 @@ func (service *MerchantServiceImpl) GetByParams(merchantId, phone string) (*merc
 	defer helper.CommitOrRollback(tx)
 
 	merchant, err2 := service.MerchantRepository.FindByParams(tx, merchantId, phone)
-	helper.PanicError(err2)
+	if err2 != nil {
+		log.Error("userID: "+merchantId, err)
+		return nil, nil, err2
+	}
 
 	log := entity.Log{
 		UserId:      merchant.Id,

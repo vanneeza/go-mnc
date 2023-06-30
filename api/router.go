@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/vanneeza/go-mnc/api/controller/bankctrl"
 	"github.com/vanneeza/go-mnc/api/controller/customerctrl"
 	"github.com/vanneeza/go-mnc/api/controller/loginctrl"
@@ -31,6 +32,7 @@ func Run(db *sql.DB, jwtKey string) *gin.Engine {
 
 	logRepo := logrepo.NewLogRepository()
 	logSrv := logsrv.NewLogService(db, logRepo)
+	validate := validator.New()
 
 	productRepo := productrepo.NewProductRepository()
 	customerRepo := customerrepo.NewCustomerRepository()
@@ -51,10 +53,10 @@ func Run(db *sql.DB, jwtKey string) *gin.Engine {
 	productCtrl := productctrl.NewProductController(productSrv)
 
 	txRepo := txrepo.NewTxRepository()
-	txSrv := txsrv.NewTxService(db, txRepo, productRepo, merchantRepo, bankRepo, balanceRepo, customerRepo, logSrv)
+	txSrv := txsrv.NewTxService(db, txRepo, productRepo, merchantRepo, bankRepo, balanceRepo, customerRepo, validate, logSrv)
 	txCtrl := txctrl.NewTxController(txSrv)
 
-	loginCtrl := loginctrl.NewLoginController(customerSrv, merchantSrv, logSrv)
+	loginCtrl := loginctrl.NewLoginController(customerSrv, merchantSrv, validate, logSrv)
 	api := r.Group("mnc/api/")
 	api.POST("login/", loginCtrl.Login)
 	api.GET("transaction/orders", txCtrl.ViewAllOrder)

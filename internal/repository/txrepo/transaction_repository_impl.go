@@ -118,14 +118,16 @@ func (repository *TxRepositoryImpl) UpdateDetail(tx *sql.Tx, detail *entity.Deta
 }
 
 func (repository *TxRepositoryImpl) FindOrder(tx *sql.Tx, detailId string) (*entity.Order, error) {
-	SQL := "SELECT id, qty, product_id, customer_id, detail_id FROM tx_order WHERE detail_id = $1"
+	SQL := `SELECT tx_order.id, tx_order.qty, tx_order.product_id, tx_order.customer_id, tx_order.detail_id,
+	detail.status, detail.total_price, detail.bank_id, detail.photo FROM detail
+	INNER JOIN tx_order ON detail.id = tx_order.detail_id WHERE detail.id = $1`
 	rows, err := tx.Query(SQL, detailId)
 	helper.PanicError(err)
 	defer rows.Close()
 
 	var order entity.Order
 	if rows.Next() {
-		err := rows.Scan(&order.Id, &order.Qty, &order.Product.Id, &order.Customer.Id, &order.Detail.Id)
+		err := rows.Scan(&order.Id, &order.Qty, &order.Product.Id, &order.Customer.Id, &order.Detail.Id, &order.Detail.Status, &order.Detail.TotalPrice, &order.Detail.Bank.Id, &order.Detail.Photo)
 		helper.PanicError(err)
 		return &order, nil
 

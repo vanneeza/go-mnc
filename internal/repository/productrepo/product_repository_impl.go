@@ -3,7 +3,6 @@ package productrepo
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 
 	"github.com/vanneeza/go-mnc/internal/domain/entity"
 	"github.com/vanneeza/go-mnc/utils/helper"
@@ -52,7 +51,6 @@ func (repository *ProductRepositoryImpl) FindByParams(tx *sql.Tx, productId, mer
 	if rows.Next() {
 		err := rows.Scan(&product.Id, &product.Name, &product.Price, &product.Description, &product.Merchant.Id)
 		helper.PanicError(err)
-		fmt.Printf("repo product: %v\n", product)
 		return &product, nil
 	} else {
 		return &product, errors.New("product is not found")

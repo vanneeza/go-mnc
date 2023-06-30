@@ -68,3 +68,155 @@
 {"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T09:45:52+07:00"}
 {"level":"info","msg":"Toko Minuman Jahe Has Login","time":"2023-06-30T09:46:56+07:00"}
 {"level":"info","msg":"View transaction history merchant id: 2RrDT2sR2OoBwrpuQNdKPJkaJRB","time":"2023-06-30T09:47:05+07:00"}
+{"level":"info","msg":"Toko Minuman Jahe Has Logout","time":"2023-06-30T10:12:25+07:00"}
+{"level":"info","msg":"Toko Minuman Jahe Has Login","time":"2023-06-30T10:12:36+07:00"}
+{"level":"info","msg":"Toko Minuman Jahe Has Logout","time":"2023-06-30T10:12:41+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T10:13:05+07:00"}
+{"error":"json: cannot unmarshal number 150 into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:14:21+07:00"}
+{"error":"json: cannot unmarshal number 150 into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:14:33+07:00"}
+{"error":"json: cannot unmarshal number 343 into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:14:40+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the order","time":"2023-06-30T10:15:23+07:00"}
+{"error":"failed to create order","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:15:42+07:00"}
+{"error":"failed to create order","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:16:00+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:24:59+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:26:48+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:26:58+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:27:09+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:27:11+07:00"}
+{"error":"json: cannot unmarshal string into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:27:12+07:00"}
+{"error":"json: cannot unmarshal number 323343342 into Go struct field OrderCreateRequest.qty of type int8","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:27:19+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the order","time":"2023-06-30T10:27:45+07:00"}
+{"error":"product is not found","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:30:25+07:00"}
+{"error":"product is not found","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:30:29+07:00"}
+{"error":"failed to create order","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:30:40+07:00"}
+{"error":"failed to create order","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:30:47+07:00"}
+{"error":"failed to create order","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:31:07+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the order","time":"2023-06-30T10:35:34+07:00"}
+{"error":"unexpected end of JSON input","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:36:14+07:00"}
+{"error":"unexpected end of JSON input","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:36:23+07:00"}
+{"error":"unexpected end of JSON input","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:36:33+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T10:37:02+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T10:59:03+07:00"}
+{"error":"failed to payment","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T10:59:52+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T10:59:57+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:00:25+07:00"}
+{"error":"unexpected end of JSON input","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:00:30+07:00"}
+{"error":"unexpected end of JSON input","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:00:44+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:01:07+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:01:43+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:02:09+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:02:20+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the order","time":"2023-06-30T11:02:33+07:00"}
+{"error":"failed to payment","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:02:57+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:03:06+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:03:20+07:00"}
+{"error":"order is not found","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:06:33+07:00"}
+{"error":"the money is not enough","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:06:42+07:00"}
+{"error":"failed to payment","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:06:49+07:00"}
+{"error":"bank admin is not found","level":"error","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ","time":"2023-06-30T11:06:53+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:07:24+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T11:13:28+07:00"}
+{"level":"info","msg":"userId: 2RrPGAjlcxmpEiRtPKBnvxIaRLQ Has create the payment","time":"2023-06-30T11:13:31+07:00"}
+{"level":"info","msg":"Welly Has Login","time":"2023-06-30T11:31:07+07:00"}
+{"level":"info","msg":"Welly Has Logout","time":"2023-06-30T11:31:47+07:00"}
+{"level":"info","msg":"Welly Has Login","time":"2023-06-30T11:33:16+07:00"}
+{"level":"info","msg":"Welly Has Logout","time":"2023-06-30T11:33:20+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T11:34:08+07:00"}
+{"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T11:34:14+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T11:43:54+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T11:51:47+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T11:51:47+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T11:54:13+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T11:54:31+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T11:55:54+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:03:35+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:03:35+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:03:46+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:04:19+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:09+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T12:06:09+07:00"}
+{"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T12:06:17+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:32+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:38+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:38+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:43+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:06:43+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:07:18+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:07:19+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:09:28+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:09:28+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:10:04+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:10:04+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:11:48+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T12:11:48+07:00"}
+{"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T12:12:48+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:12:53+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:12:53+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:13:14+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:13:14+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:13:32+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:13:32+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:14:46+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:14:47+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:14:56+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:15:06+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:15:15+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:15:15+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:19:26+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:21:12+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:21:12+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:21:25+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:21:25+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:21:31+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:21:49+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:22:42+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T12:22:42+07:00"}
+{"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T12:22:48+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:22:56+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:22:56+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:23:24+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:23:30+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:23:30+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:23:36+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:28:42+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:28:42+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:34:33+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:34:33+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:34:43+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:34:51+07:00"}
+{"level":"info","msg":"Vanneeza Has Login","time":"2023-06-30T12:34:51+07:00"}
+{"level":"info","msg":"Vanneeza Has Logout","time":"2023-06-30T12:34:54+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:35:06+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:35:06+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:35:09+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:35:14+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:35:14+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:37:29+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Login","time":"2023-06-30T12:37:29+07:00"}
+{"level":"info","msg":"Toko Makanan Sehat Has Logout","time":"2023-06-30T12:38:18+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:38:24+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:38:24+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:44:56+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:44:56+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:45:42+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:45:42+07:00"}
+{"error":"customer is not found","level":"error","msg":"failed to login","time":"2023-06-30T12:45:42+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:46:41+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:46:41+07:00"}
+{"error":"customer is not found","level":"error","msg":"failed to login","time":"2023-06-30T12:46:41+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:47:51+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:47:51+07:00"}
+{"error":"user not found","level":"error","msg":"failed to login","time":"2023-06-30T12:47:51+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:48:51+07:00"}
+{"level":"info","msg":"Toko Minuman Jahe Has Login","time":"2023-06-30T12:48:51+07:00"}
+{"level":"info","msg":"Toko Minuman Jahe Has Logout","time":"2023-06-30T12:48:55+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:49:23+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:49:33+07:00"}
+{"level":"info","msg":"Billa Has Login","time":"2023-06-30T12:49:33+07:00"}
+{"level":"info","msg":"Billa Has Logout","time":"2023-06-30T12:49:36+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:49:39+07:00"}
+{"level":"info","msg":"Billa Has Login","time":"2023-06-30T12:49:39+07:00"}
+{"level":"info","msg":"Billa Has Logout","time":"2023-06-30T12:49:44+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:49:50+07:00"}
+{"error":null,"level":"error","msg":"userID: ","time":"2023-06-30T12:49:50+07:00"}
+{"error":"user not found","level":"error","msg":"failed to login","time":"2023-06-30T12:49:50+07:00"}

@@ -1,11 +1,13 @@
 package loginctrl
 
 import (
+	"errors"
 	"net/http"
 	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt"
 	"github.com/vanneeza/go-mnc/internal/domain/entity"
 	"github.com/vanneeza/go-mnc/internal/domain/web"
@@ -29,13 +31,15 @@ type LoginController interface {
 type loginController struct {
 	customerService customersrv.CustomerService
 	merchantService merchantsrv.MerchantService
+	Validate        *validator.Validate
 	LogService      logsrv.LogService
 }
 
-func NewLoginController(customerService customersrv.CustomerService, merchantService merchantsrv.MerchantService, logService logsrv.LogService) LoginController {
+func NewLoginController(customerService customersrv.CustomerService, merchantService merchantsrv.MerchantService, validate *validator.Validate, logService logsrv.LogService) LoginController {
 	return &loginController{
 		customerService: customerService,
 		merchantService: merchantService,
+		Validate:        validate,
 		LogService:      logService,
 	}
 }
@@ -45,16 +49,49 @@ func (l *loginController) Login(ctx *gin.Context) {
 	var role string
 	jwtKey := os.Getenv("JWT_KEY")
 
-	err := ctx.ShouldBindJSON(&login)
-	helper.PanicError(err)
+	errBindJson := ctx.ShouldBindJSON(&login)
+	if errBindJson != nil {
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to login",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"login": webResponse})
+		return
+	}
 
-	_, customer, err := l.customerService.GetByParams("", login.Phone)
-	helper.PanicError(err)
+	err3 := l.Validate.Struct(login)
+	if err3 != nil {
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to login",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, gin.H{"login": webResponse})
+		return
+	}
+
+	_, customer, errCustomer := l.customerService.GetByParams("", login.Phone)
+	_, merchant, errMerchant := l.merchantService.GetByParams("", login.Phone)
+
+	if errCustomer != nil && errMerchant != nil {
+
+		log.Error("failed to login", errors.New("user not found"))
+		webResponse := web.WebResponse{
+			Code:    http.StatusBadRequest,
+			Status:  "BAD_REQUEST",
+			Message: "Failed to login, user not found",
+			Data:    "NULL",
+		}
+		ctx.JSON(http.StatusBadRequest, webResponse)
+		return
+	}
+
 	if customer != nil {
 		role = "customer"
 	}
-	_, merchant, err2 := l.merchantService.GetByParams("", login.Phone)
-	helper.PanicError(err2)
 	if merchant != nil {
 		role = "merchant"
 	}
@@ -201,7 +238,7 @@ func (l *loginController) Logout(ctx *gin.Context) {
 	result := web.WebResponse{
 		Code:    http.StatusOK,
 		Status:  "OK",
-		Message: "Logout successfully",
+		Message: "Logout successfully, see you soon! " + name,
 		Data:    "NULL",
 	}
 	ctx.JSON(http.StatusOK, result)

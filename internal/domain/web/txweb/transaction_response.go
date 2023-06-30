@@ -37,10 +37,10 @@ type PaymentOrder struct {
 }
 
 type PaymentResponse struct {
-	Id           string       `json:"id"`
-	PaymentOrder PaymentOrder `json:"order"`
-	Pay          float64      `json:"pay"`
-	Photo        string       `json:"photo"`
+	Id           string        `json:"id"`
+	PaymentOrder PaymentOrder  `json:"order"`
+	Pay          float64       `json:"pay"`
+	Detail       DetailPayment `json:"detail"`
 }
 
 type Payout struct {
@@ -67,6 +67,11 @@ type Confirmation struct {
 	Photo      string                     `json:"photo"`
 	Order      OrderResponseWithoutDetail `json:"order"`
 	Payout     Payout                     `json:"payout"`
+}
+
+type DetailPayment struct {
+	TotalPrice float64 `json:"total_price"`
+	Photo      string  `json:"photo"`
 }
 
 type TxDetailMerchant struct {
