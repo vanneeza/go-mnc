@@ -1,6 +1,10 @@
 package entity
 
 type Balance struct {
-	Id      string  `json:"id"`
+	Id      string
+	Balance float64
+}
+
+type BalanceResponse struct {
 	Balance float64 `json:"balance"`
 }

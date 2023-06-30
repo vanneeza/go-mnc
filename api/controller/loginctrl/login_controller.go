@@ -80,12 +80,12 @@ func (l *loginController) Login(ctx *gin.Context) {
 
 		log.Error("failed to login", errors.New("user not found"))
 		webResponse := web.WebResponse{
-			Code:    http.StatusBadRequest,
-			Status:  "BAD_REQUEST",
+			Code:    http.StatusNotFound,
+			Status:  "STATUS_NOT_FOUND",
 			Message: "Failed to login, user not found",
 			Data:    "NULL",
 		}
-		ctx.JSON(http.StatusBadRequest, webResponse)
+		ctx.JSON(http.StatusNotFound, webResponse)
 		return
 	}
 

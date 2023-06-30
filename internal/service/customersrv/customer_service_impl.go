@@ -34,7 +34,9 @@ func (service *CustomerServiceImpl) ViewTxHistories(customerId string) ([]txweb.
 	defer helper.CommitOrRollback(tx)
 
 	customerTxHistory, err2 := service.CustomerRepository.HistoryTransaction(tx, customerId)
-	helper.PanicError(err2)
+	if err2 != nil {
+		return nil, err2
+	}
 
 	var responses []txweb.TxHistoryCustomerResponse
 
@@ -88,7 +90,7 @@ func (service *CustomerServiceImpl) ViewTxHistories(customerId string) ([]txweb.
 }
 
 // LogActivity implements CustomerService.
-func (service *CustomerServiceImpl) LogActivity(customerId string) (*[]entity.Log, error) {
+func (service *CustomerServiceImpl) LogActivity(customerId string) (*[]entity.LogResponse, error) {
 	tx, err := service.Db.Begin()
 	helper.PanicError(err)
 	defer helper.CommitOrRollback(tx)
@@ -96,10 +98,15 @@ func (service *CustomerServiceImpl) LogActivity(customerId string) (*[]entity.Lo
 	logs, err2 := service.LogRepository.GetAllByUserId(tx, customerId)
 	helper.PanicError(err2)
 
-	var logResponse []entity.Log
+	var logResponse []entity.LogResponse
 
 	for _, l := range *logs {
-		logResponse = append(logResponse, l)
+		logRsp := entity.LogResponse{
+			Activity:    l.Activity,
+			Description: l.Description,
+			CreatedAt:   time.Now(),
+		}
+		logResponse = append(logResponse, logRsp)
 	}
 
 	return &logResponse, nil

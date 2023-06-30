@@ -12,6 +12,6 @@ type MerchantService interface {
 	GetByParams(merchantId, phone string) (*merchantweb.Response, *merchantweb.ForLogin, error)
 	Edit(req *merchantweb.UpdateRequest) (*merchantweb.Response, error)
 	Unreg(merchantId string) (*merchantweb.Response, error)
-	LogActivity(merchantId string) (*[]entity.Log, error)
+	LogActivity(merchantId string) (*[]entity.LogResponse, error)
 	MerchantTxHistory(merchantId string) ([]txweb.TxHistoryMerchantResponse, error)
 }

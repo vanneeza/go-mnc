@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+	"github.com/vanneeza/go-mnc/api/controller/balancectrl"
 	"github.com/vanneeza/go-mnc/api/controller/bankctrl"
 	"github.com/vanneeza/go-mnc/api/controller/customerctrl"
 	"github.com/vanneeza/go-mnc/api/controller/loginctrl"
@@ -19,6 +20,7 @@ import (
 	"github.com/vanneeza/go-mnc/internal/repository/merchantrepo"
 	"github.com/vanneeza/go-mnc/internal/repository/productrepo"
 	"github.com/vanneeza/go-mnc/internal/repository/txrepo"
+	"github.com/vanneeza/go-mnc/internal/service/balancesrv"
 	"github.com/vanneeza/go-mnc/internal/service/banksrv"
 	"github.com/vanneeza/go-mnc/internal/service/customersrv"
 	"github.com/vanneeza/go-mnc/internal/service/logsrv"
@@ -56,6 +58,8 @@ func Run(db *sql.DB, jwtKey string) *gin.Engine {
 	txSrv := txsrv.NewTxService(db, txRepo, productRepo, merchantRepo, bankRepo, balanceRepo, customerRepo, validate, logSrv)
 	txCtrl := txctrl.NewTxController(txSrv)
 
+	balancesrv := balancesrv.NewBalanceService(db, balanceRepo)
+	balancectrl := balancectrl.NewBalanceController(balancesrv)
 	loginCtrl := loginctrl.NewLoginController(customerSrv, merchantSrv, validate, logSrv)
 	api := r.Group("mnc/api/")
 	api.POST("login/", loginCtrl.Login)
@@ -72,6 +76,7 @@ func Run(db *sql.DB, jwtKey string) *gin.Engine {
 	api.POST("admin/bank", bankCtrl.RegisterBankAdmin)
 	api.GET("admin/banks", bankCtrl.GetAllBankAdmin)
 	api.GET("admin/bank/:id", bankCtrl.GetByIdBankAdmin)
+	api.GET("admin/balance", balancectrl.ViewAll)
 
 	customer := api.Group("customer")
 	customer.Use(middleware.AuthMiddleware(jwtKey))

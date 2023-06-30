@@ -3,7 +3,6 @@ package customerrepo
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 
 	"github.com/vanneeza/go-mnc/internal/domain/entity"
 	"github.com/vanneeza/go-mnc/utils/helper"
@@ -52,7 +51,6 @@ func (repository *CustomerRepositoryImpl) FindByParams(tx *sql.Tx, customerId, p
 	if rows.Next() {
 		err := rows.Scan(&customer.Id, &customer.Name, &customer.Phone, &customer.Address, &customer.Password, &customer.Role)
 		helper.PanicError(err)
-		fmt.Printf("repo customer: %v\n", customer)
 		return &customer, nil
 	} else {
 		return &customer, errors.New("customer is not found")

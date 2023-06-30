@@ -12,6 +12,6 @@ type CustomerService interface {
 	GetByParams(customerId, phone string) (*customerweb.Response, *customerweb.ForLogin, error)
 	Edit(req *customerweb.UpdateRequest) (*customerweb.Response, error)
 	Unreg(customerId string) (*customerweb.Response, error)
-	LogActivity(customerId string) (*[]entity.Log, error)
+	LogActivity(customerId string) (*[]entity.LogResponse, error)
 	ViewTxHistories(customerId string) ([]txweb.TxHistoryCustomerResponse, error)
 }

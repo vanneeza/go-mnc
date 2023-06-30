@@ -13,6 +13,7 @@ type MerchantRepositoryImpl struct {
 
 // HistoryTransaction implements MerchantRepository.
 func (*MerchantRepositoryImpl) HistoryTransaction(tx *sql.Tx, merchantId string) ([]entity.MerchantTxHistory, error) {
+
 	SQL := `SELECT detail.id, detail.status, detail.total_price, detail.photo,
 	tx_order.qty, tx_order.product_id, tx_order.customer_id FROM detail
 	INNER JOIN tx_order ON detail.id = tx_order.detail_id

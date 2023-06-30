@@ -90,7 +90,7 @@ func (service *MerchantServiceImpl) MerchantTxHistory(merchantId string) ([]txwe
 }
 
 // LogActivity implements MerchantService.
-func (service *MerchantServiceImpl) LogActivity(merchantId string) (*[]entity.Log, error) {
+func (service *MerchantServiceImpl) LogActivity(merchantId string) (*[]entity.LogResponse, error) {
 	tx, err := service.Db.Begin()
 	helper.PanicError(err)
 	defer helper.CommitOrRollback(tx)
@@ -98,9 +98,14 @@ func (service *MerchantServiceImpl) LogActivity(merchantId string) (*[]entity.Lo
 	logs, err2 := service.LogRepository.GetAllByUserId(tx, merchantId)
 	helper.PanicError(err2)
 
-	var logResponse []entity.Log
+	var logResponse []entity.LogResponse
 	for _, l := range *logs {
-		logResponse = append(logResponse, l)
+		logRsp := entity.LogResponse{
+			Activity:    l.Activity,
+			Description: l.Description,
+			CreatedAt:   time.Now(),
+		}
+		logResponse = append(logResponse, logRsp)
 	}
 
 	return &logResponse, nil

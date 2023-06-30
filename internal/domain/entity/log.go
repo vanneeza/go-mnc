@@ -10,3 +10,9 @@ type Log struct {
 	Description string    `json:"description"`
 	CreatedAt   time.Time `json:"created_at"`
 }
+
+type LogResponse struct {
+	Activity    string    `json:"activity"`
+	Description string    `json:"description"`
+	CreatedAt   time.Time `json:"created_at"`
+}

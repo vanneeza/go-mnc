@@ -34,7 +34,17 @@ func (controller *CustomerControllerImpl) ViewTxHistories(ctx *gin.Context) {
 	}
 
 	response, err := controller.CustomerService.ViewTxHistories(customerId)
-	helper.PanicError(err)
+	if err != nil {
+		log.Error("UserID: "+customerId, err)
+		webResponse := web.WebResponse{
+			Code:    http.StatusNotFound,
+			Status:  "OK",
+			Message: err.Error(),
+			Data:    response,
+		}
+
+		ctx.JSON(http.StatusNotFound, gin.H{"transaction_history": webResponse})
+	}
 
 	log.Info("View transaction history customer id: " + customerId)
 	webResponse := web.WebResponse{
