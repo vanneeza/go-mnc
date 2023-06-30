@@ -1,0 +1,1033 @@
+{
+	"info": {
+		"_postman_id": "b130adf3-7daa-4da5-ba82-b1b92a062294",
+		"name": "Chauzar-Vanneeza-API-MNC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27535838"
+	},
+	"item": [
+		{
+			"name": "MNC",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Bank",
+							"item": [
+								{
+									"name": "Create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc4ODA4NzgsImlkIjoiMlJuRTVtR3hGWk50NnI5UXhxQ2M3OTkzYmZFIiwibmFtZSI6IlRva28gQmFieSBFbGl0ZSIsInBob25lIjoiMDg5MTIzMzMyMjExNCIsInJvbGUiOiJtZXJjaGFudCJ9.EJhR7dxKabkmf0tZdwByhaJ-jhoQFUtwJtFFRJvdWS8",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"BCA\",\r\n    \"bank_account\": \"PT. Vanneeza Corps\",\r\n    \"branch\": \"Cisarua\",\r\n    \"account_number\": 7634232132\r\n}   ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8000/mnc/api/admin/bank/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"mnc",
+												"api",
+												"admin",
+												"bank",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8000/mnc/api/admin/banks",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"mnc",
+												"api",
+												"admin",
+												"banks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc4MjIxODUsImlkIjoiMlJrd1F5NkVPQjRNVHdoY1JJZ1ZhSVVESDVSIiwibmFtZSI6IlRva28gQW5hayBTYXlhbmciLCJwaG9uZSI6IjA4OTExMTIyMzMzNDUiLCJyb2xlIjoibWVyY2hhbnQifQ.Rgs1o4K9fEcFT8ynsXZRpMjlm1YbMCXkX5e0NeVGJ9E",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8000/mnc/api/admin/bank/2RnzqEw3kKBWYNZSSnHZ1Lk426g",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8000",
+											"path": [
+												"mnc",
+												"api",
+												"admin",
+												"bank",
+												"2RnzqEw3kKBWYNZSSnHZ1Lk426g"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get All Orders",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"qty\" : 1,\r\n \"product\": \"2RnELDtOFx0JVDsNESBVG11MgCd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/transaction/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"transaction",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/transaction/confirmation/2RusIKcxyYWd76w8vncUaH7IsCL",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"transaction",
+										"confirmation",
+										"2RusIKcxyYWd76w8vncUaH7IsCL"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vanneeza\",\r\n    \"phone\": \"089554433221\",\r\n    \"address\": \"Jln. Jalan Kemana\",\r\n    \"password\": \"customer123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/customer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Merchant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Toko Makanan Enak\",\r\n    \"phone\": \"089966554322\",\r\n    \"password\": \"merchant123\"\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/merchant/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"merchant",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"089554433221\",\r\n    \"password\": \"customer123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bank Merchant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/merchant/banks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"merchant",
+								"banks",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Merchant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/merchants/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"merchants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/admin/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"admin",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"qty\" : 3,\r\n \"product\": \"2RvSr7t7HK8gdZ6IsCW3fSBcXeZ\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/transaction/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"transaction",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "bank",
+											"value": "2RnzuNoWNHnjI5IA8xyM0hLOaBD",
+											"type": "text"
+										},
+										{
+											"key": "pay",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/Vanneeza/Documents/db_pancakai_real"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/transaction/payment/2RvYe8b9MgJxgtzem2CQX7EDD5S",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"transaction",
+										"payment",
+										"2RvYe8b9MgJxgtzem2CQX7EDD5S"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/customer/activity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"customer",
+										"activity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get History Transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/customer/transaction_history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"customer",
+										"transaction_history"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiSmxuLiBIaWxhbmciLCJleHAiOjE2ODc4MDI1NTgsImlkIjoiMlJqSEdtbnlUaFBUWDZRUGdLdUhXcDM2azdzIiwibmFtZSI6Ikplc3NpY2EiLCJwaG9uZSI6IjA4OTcxMjM0NjEyIiwicm9sZSI6ImN1c3RvbWVyIn0.BOv72XBnEFp-BNf5sr4z_nb7zpqrgX3eFIp_R48ju0M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Keysa\",\r\n    \"phone\": \"089516855430\",\r\n    \"address\": \"jln. Washingkilo\",\r\n    \"password\": \"customer123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/customer/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"customer",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/customer/logout/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"customer",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Merchant",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc4ODA4NzgsImlkIjoiMlJuRTVtR3hGWk50NnI5UXhxQ2M3OTkzYmZFIiwibmFtZSI6IlRva28gQmFieSBFbGl0ZSIsInBob25lIjoiMDg5MTIzMzMyMjExNCIsInJvbGUiOiJtZXJjaGFudCJ9.EJhR7dxKabkmf0tZdwByhaJ-jhoQFUtwJtFFRJvdWS8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Coffe latte, Mochachino\",\r\n    \"price\": 45000,\r\n    \"description\": \"Minuman kopi, untuk kamu yang suka begadang\"\r\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/product/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"product",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/product/2RvObmCfcOZ3VO0IQcKObd35re4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"product",
+										"2RvObmCfcOZ3VO0IQcKObd35re4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Juice Jeruk\",\r\n    \"price\": 15000,\r\n    \"description\": \"Minuman rasa jeruk, manis banget!\"\r\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/product/2RvObmCfcOZ3VO0IQcKObd35re4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"product",
+										"2RvObmCfcOZ3VO0IQcKObd35re4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/product/2RvObmCfcOZ3VO0IQcKObd35re4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"product",
+										"2RvObmCfcOZ3VO0IQcKObd35re4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bank",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODc4ODA4NzgsImlkIjoiMlJuRTVtR3hGWk50NnI5UXhxQ2M3OTkzYmZFIiwibmFtZSI6IlRva28gQmFieSBFbGl0ZSIsInBob25lIjoiMDg5MTIzMzMyMjExNCIsInJvbGUiOiJtZXJjaGFudCJ9.EJhR7dxKabkmf0tZdwByhaJ-jhoQFUtwJtFFRJvdWS8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mandiri\",\r\n    \"bank_account\": \"PT. Makanan Sehat\",\r\n    \"branch\": \"Jakarta\",\r\n    \"account_number\": 35544569744\r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/bank/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"bank",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/bank/2RvTZzSJoV3NZ1ztkogVWIp4TMb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"bank",
+										"2RvTZzSJoV3NZ1ztkogVWIp4TMb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Mandiri\",\r\n    \"bank_account\": \"PT. Makanan Sehat Banget\",\r\n    \"branch\": \"Jakarta\",\r\n    \"account_number\": 3554435359744\r\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/bank/2RvTZzSJoV3NZ1ztkogVWIp4TMb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"bank",
+										"2RvTZzSJoV3NZ1ztkogVWIp4TMb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/bank/2RvTZzSJoV3NZ1ztkogVWIp4TMb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"bank",
+										"2RvTZzSJoV3NZ1ztkogVWIp4TMb"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Get Activity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/activity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"activity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get HIstory Transaction",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/transaction_history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										"transaction_history"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Toko Baby Elite\",\r\n    \"phone\": \"089455231243\",\r\n    \"password\": \"merchant123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/mnc/api/merchant/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"mnc",
+										"api",
+										"merchant",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/mnc/api/merchant/logout/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mnc",
+								"api",
+								"merchant",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -2,6 +2,7 @@ package productsrv
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/segmentio/ksuid"
 	"github.com/vanneeza/go-mnc/internal/domain/entity"
@@ -73,10 +74,11 @@ func (service *ProductServiceImpl) GetAll() ([]productweb.Response, error) {
 	var products []productweb.Response
 	product, err2 := service.ProductRepository.FindAll(tx)
 	helper.PanicError(err2)
-
+	fmt.Printf("srv product: %v\n", product)
 	for _, p := range product {
 		merchant, err3 := service.MerchantRepository.FindByParams(tx, p.Merchant.Id, "")
 		helper.PanicError(err3)
+		fmt.Printf("srv merchant: %v\n", merchant)
 
 		merchantResponse := merchantweb.Response{
 			Id:    merchant.Id,
@@ -91,6 +93,8 @@ func (service *ProductServiceImpl) GetAll() ([]productweb.Response, error) {
 			Description: p.Description,
 			Merchant:    merchantResponse,
 		}
+		fmt.Printf("productResponse: %v\n", productResponse)
+
 		products = append(products, productResponse)
 	}
 
